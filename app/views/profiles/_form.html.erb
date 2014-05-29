@@ -1,0 +1,24 @@
+<%= form_for(@profile) do |f| %>
+<% if @profile.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+  <ul>
+    <% @profile.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="row">
+  <div class="block-gray col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+    <div class="form-group">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre del Perfil'  %>
+    </div>
+      <%= f.hidden_field :permissions %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </div>
+</div>
+<% end %>

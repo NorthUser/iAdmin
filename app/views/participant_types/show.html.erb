@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @participant_type.name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @participant_type.type_access %>
+</p>
+
+
+<%= link_to 'Edit', edit_participant_type_path(@participant_type) %> |
+<%= link_to 'Back', participant_types_path %>

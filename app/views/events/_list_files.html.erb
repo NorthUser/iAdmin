@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-12 col-xs-12 col-md-12 table-responsive">
+    <table class="table table-striped table-hover datatable">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Nombre de Archivo</th>
+          <th>Permiso</th>
+          <th>Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @event.documents.each do |document| %>
+        <tr>
+          <td><%= document.title %></td>
+          <td><%= document.url %></td>
+          <td><%= document.type_attribute %></td>
+          <td>
+            <%= (link_to '', "/events/#{document.id}/download", class: 'btn btn-primary glyphicon glyphicon-cloud-download') if @r  %>
+            <%= (link_to '', "/events/#{document.id}/#{document.event_id}/change_doc", class: 'btn btn-success glyphicon glyphicon-refresh') if @w  %>
+            </a>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

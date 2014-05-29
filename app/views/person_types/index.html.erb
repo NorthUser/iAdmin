@@ -1,0 +1,30 @@
+<% content_for(:title) do %>Roles de personas<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', new_person_type_path, class: 'btn btn-success glyphicon glyphicon-plus-sign'%>
+<% end %>
+<div class="row">
+  <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-lg-offset-2 col-md-offset-2 table-responsive">
+    <table class="table table-striped table-hover datatable">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Category</th>
+          <th>Public</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @person_types.each do |person_type| %>
+        <tr>
+          <td><%= person_type.role %></td>
+          <td><%= person_type.category %></td>
+          <td><%= person_type.public %></td>
+          <td><%= link_to 'Show', person_type, class: 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_person_type_path(person_type), class: 'btn btn-warning' %>
+          <%= link_to 'Destroy', person_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

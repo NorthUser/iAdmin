@@ -1,0 +1,8 @@
+<% content_for(:title) do %>Permisos del perfil<% end %>
+
+<% content_for(:primary_command) do %>
+<%= link_to '', profiles_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
+
+<%= render 'form' %>
+<%= render 'permissions' %>

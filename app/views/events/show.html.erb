@@ -1,0 +1,59 @@
+<% content_for(:title) do %><%= [@event.title, "programado para el", datetime_event(@event.date)].join(' ') %><% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', events_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <strong>Evento <%= @event.title %></strong>
+      </div>
+      <div class="clearfix">&nbsp;</div>
+      <p>
+        <strong>Tipo de Evento:</strong>
+        <%= @event.event_type.name%>
+      </p>
+
+      <p>
+        <strong>Fecha del evento:</strong>
+        <%= datetime_event @event.date %>
+      </p>
+
+      <p>
+        <strong>Lugar:</strong>
+        <%= [@event.place.name, "-", @event.place.description].join(' ') %>
+      </p>
+
+      <p>
+        <strong>Resumen del evento:</strong>
+        <%= @event.summary %>
+      </p>
+      <div class="clearfix">&nbsp;</div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <strong>Documentos</strong>
+      </div>
+      <div class="clearfix">&nbsp;</div>
+      <%= render 'list_files' %>
+      <div class="clearfix">&nbsp;</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-12 col-xs-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <strong>
+            Participantes
+          </strong>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+        <%= render 'list_participants' %>
+        <div class="clearfix">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<% content_for(:title) do %>Lista de Tipo de Participantes<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', new_participant_type_path, class: 'btn btn-success glyphicon glyphicon-plus-sign' %>
+<% end %>
+
+<div class="row">
+  <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-mdoffset-3 col-lg-offset-3 table-responsive">
+    <table class="table table-striped table-hover datatable">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @participant_types.each do |participant_type| %>
+      <tr>
+        <td><%= participant_type.name %></td>
+        <td><%= participant_type.type_access %></td>
+        <td><%= link_to 'Show', participant_type, class: 'btn btn-sm btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_participant_type_path(participant_type), class: 'btn btn-sm btn-warning' %></td>
+        <td><%= link_to 'Destroy', participant_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

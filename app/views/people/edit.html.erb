@@ -1,0 +1,5 @@
+<% content_for(:title) do %>Editar datos de persona<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', people_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
+<%= render 'form' %>

@@ -1,0 +1,50 @@
+<%= form_for(@person) do |f| %>
+<% if @person.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+  <ul>
+    <% @person.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="row">
+  <div class="block-gray col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-md-offset-4 ">
+    <div class="form-group">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, class: 'form-control', placeholder: 'Apellido Paterno' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :second_last_name %><br />
+      <%= f.text_field :second_last_name, class: 'form-control', placeholder: 'Apellido Materno' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :person_type_id %><br />
+      <%= f.select :person_type_id, PersonType.order(:role).collect {|e| [[e.role, e.category].join(' / '), e.id]}, {include_blank: true}, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :membership %><br />
+      <%= f.text_field :membership, class: 'form-control', placeholder: 'Afiliación' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :academic_degree %><br />
+      <%= f.text_field :academic_degree, class: 'form-control', placeholder: 'Grado Academico' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :biography %><br />
+      <%= f.text_area :biography, class: 'form-control', row: '3', placeholder: 'Biografia ;) enchulate' %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="padding-top col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-md-offset-4 ">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+</div>
+<% end %>

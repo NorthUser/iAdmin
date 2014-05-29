@@ -1,0 +1,30 @@
+<%= form_for(@participant_type) do |f| %>
+<% if @participant_type.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@participant_type.errors.count, "error") %> prohibited this participant_type from being saved:</h2>
+
+  <ul>
+    <% @participant_type.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="row">
+  <div class="block-gray col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-md-offset-4 ">
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Descripcion'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :type_access %>
+      <%= f.select :type_access, [['Descargar / Subir', 'r-w'], ['Subir', 'w'], ['Descargar', 'r']], {include_blank: true}, class: 'form-control' %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="padding-top col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-md-offset-4 ">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+</div>
+<% end %>

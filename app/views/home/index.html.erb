@@ -1,0 +1,17 @@
+<% if session[:id] %>
+<% content_for :title do %> Bienvenido <%= session[:full_name] %> <% end %>
+Exito D:!!!!
+<% else %>
+<% content_for :title do %> Iniciar session <% end %>
+<form class="form" role="form" method="POST" action="/home/login">
+	<div class="form-group">
+	<label class="sr-only" for="username">Usuario</label>
+	<input type="text" class="form-control" id="username" name="username" placeholder="Usuario">
+	</div>
+	<div class="form-group">
+		<label class="sr-only" for="password">Contraseña</label>
+		<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+	</div>
+	<button type="submit" class="btn btn-default">Ingresar</button>      
+</form>
+<% end %>

@@ -1,0 +1,6 @@
+<% content_for(:title) do %>Editar Tipo de Evento<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', event_types_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
+
+<%= render 'form' %>

@@ -1,0 +1,13 @@
+<div class="row">
+  <% @permissions.each do |c| %>
+  <div class="block-gray col-xs-4 col-sm-4 col-md-4">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="permisos" class="lstpermissions" value=<%= c.key %>
+        <%= is_cheked(@profile.permissions.split('|').include?(c.key)) if @profile.permissions != nil %> />  <!-- Si esta activo 'checked' -->
+        <%= c.description %> <!-- label -->
+      </label>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+<% content_for(:title) do %>Nuevo Usuario<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', users_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
+
+<%= render 'form' %>

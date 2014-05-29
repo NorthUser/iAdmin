@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Role:</b>
+  <%= @person_type.role %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @person_type.category %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%= @person_type.public %>
+</p>
+
+
+<%= link_to 'Edit', edit_person_type_path(@person_type) %> |
+<%= link_to 'Back', person_types_path %>

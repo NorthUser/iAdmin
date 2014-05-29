@@ -1,0 +1,5 @@
+<% content_for(:title) do %>Nuevo Tipo de Participante<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', participant_types_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
+<%= render 'form' %>

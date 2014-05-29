@@ -1,0 +1,6 @@
+<% content_for(:title) do %>Datos de Persona<% end %>
+<%content_for(:primary_command) do %>
+<%= link_to '', people_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
+
+<%= render 'form' %>

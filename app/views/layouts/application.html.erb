@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= content_for?(:title) ? yield(:title) : "Seccion" %></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<!-- <link rel="stylesheet" type="text/css" href="css/gmm.css"> -->
+	<%= javascript_include_tag "html5shiv" %>
+	<!-- librerias opcionales que activan el soporte de html5 en IE8-->
+	<!-- [if lt IE 9] -->
+	<%= javascript_include_tag "respond.min" %>
+	<!-- [endif] -->
+	<%= javascript_include_tag params[:controller] %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<!-- ------------------------------------------------------------------------------------ -->
+		
+		<%= render 'layouts/menu' %>
+
+		<!-- ------------------------------------------------------------------------------------ -->
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<strong>
+					<%= content_for?(:title) ? yield(:title) : "Seccion" %>
+				</strong>
+				<div class="pull-right">
+				<%= content_for?(:primary_command) ? yield(:primary_command) : "" %>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="row min-container">
+					<div class="col-md-12">
+						<%= yield %>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-3">
+						<address>
+							<strong>Facultad de Ingenieria Mecanica y Electrica</strong><br>
+							Abelardo L. Rodriguez #1110<br>
+							Col. xxx xxx yyy, San Nicolas de los Garza N.L.<br>
+							<abbr title="Codigo Postal">CP:</abbr> 64280<br>
+							<abbr title="Telefono">Tel:</abbr> 8125-5555<br>
+							<abbr title="Correo Electronico">E-mail</abbr> <a href="mailto:ventas@grupomarro.com.mx">info@pisis.com.mx</a>
+						</address>
+					</div>
+					<div class="col-md-9">
+						<div class="clearfix">&nbsp;</div>
+						<p class="text-right"> 
+							<small>&copy; 2014 UANL<br>
+								Todos los derechos reservados<br>
+								<a href="#">Aviso de privacidad de datos personales</a><br>
+								Desarrollado por <a href="http://rubixware.com">rubixware.com</a></small>
+							</p>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Libreria jQuery requerida por los plugins de Javascript -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+	<!-- Todos los plugins JavaScript de Bootstrap (tambien puedes incluir archivos JavaScript individuales unicos plugins que utilices)-->
+	<%= javascript_include_tag "bootstrap" %>
+	<!-- <script src={{ asset("js/bootstrap.min.js") }}></script> -->
+	<!--<%= javascript_include_tag "clock" %> -->
+	<!-- <%= javascript_include_tag "jquery.easy-ticker.min" %> -->
+	<!-- <%= javascript_include_tag "jquery.easing.min" %> -->
+</body>
+</html>

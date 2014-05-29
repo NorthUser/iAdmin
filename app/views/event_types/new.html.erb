@@ -1,0 +1,11 @@
+<% content_for(:title) do %>Nuevo Tipo de Evento<% end %>
+
+<%= render 'form' %>
+
+<% content_for(:primary_command) do %>
+<div class="row">
+  <div class="col-xs-2 col-sm-2 col-md-2 ">
+    <%= link_to '', event_types_path, class: 'glyphicon glyphicon-arrow-left btn btn-danger' %>
+  </div>
+</div>
+<% end %>

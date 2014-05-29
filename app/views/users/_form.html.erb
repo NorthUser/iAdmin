@@ -1,0 +1,42 @@
+<%= form_for(@user) do |f| %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="row">
+  <div class="block-gray col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-md-offset-4 ">
+    <div class="form-group">
+      <%= f.label :username %><br />
+      <%= f.text_field :username, class: 'form-control', placeholder: 'nickname' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <%= f.text_field :password, class: 'form-control', placeholder: 'password' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.text_field :email, class: 'form-control', placeholder: 'email'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :person_id %><br />
+      <%= f.select :person_id, Person.order(:name).map { |e| [e.full_name, e.id] }, {include_blank: true}, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :profile_id %><br />
+      <%= f.select :profile_id, Profile.order(:name).map { |e| [e.name, e.id] }, {include_blank: true}, class: 'form-control'%>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="padding-top col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-md-offset-4 ">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+</div>
+<% end %>

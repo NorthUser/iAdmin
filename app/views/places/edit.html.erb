@@ -1,0 +1,6 @@
+<% content_for(:title) do %>Editar Lugar<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', places_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
+
+<%= render 'form' %>

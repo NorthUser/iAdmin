@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  event_type_id: 1
+  date: 2014-04-07 23:28:52
+  place_id: 1
+  summary: MyText
+
+two:
+  title: MyString
+  event_type_id: 1
+  date: 2014-04-07 23:28:52
+  place_id: 1
+  summary: MyText

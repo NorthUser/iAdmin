@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event:</b>
+  <%= @event_permission.event_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @event_permission.user_id %>
+</p>
+
+<p>
+  <b>Participant type:</b>
+  <%= @event_permission.participant_type_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_permission_path(@event_permission) %> |
+<%= link_to 'Back', event_permissions_path %>

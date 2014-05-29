@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  role: MyString
+  category: MyString
+  public: false
+
+two:
+  role: MyString
+  category: MyString
+  public: false
