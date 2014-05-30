@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def type_file_valid(file_name)
-  	extension = extension(file_name)
-  	ex = [".pdf", ".doc", ".docx", ".pptx", ".ppt", ".png", ".jpg" ]
-  	return ex.include?(extension)
+    extension = extension(file_name)
+    ex = [".pdf", ".doc", ".docx", ".pptx", ".ppt", ".png", ".jpg" ]
+    return ex.include?(extension)
   end
 
   def extension(file_name)
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   # Retorna el string de la ruta donde almacenara los archivos subidos al servidor
   def path_file(name)
-  	return File.join(Rails.root,"files",name)
+    return File.join(Rails.root,"files",name)
   end
 
   def norepeat(title, user)
@@ -21,10 +21,41 @@ class ApplicationController < ActionController::Base
     events.each do |event|
       doc = Document.find_by_title_and_event_id(title, event.event_id)
       if doc
+        access_denied
         return false
       end
     end
     return true
   end
+
+  def permission_filter
+    if session[:id]
+      user = User.find(session[:id])
+      permission = Permission.find_by_controller_and_action(params[:controller], params[:action])
+      if user
+        if user.profile.permissions.include?(permission.key)
+          return true
+        else
+          access_denied
+          return false
+        end
+      end
+    else
+      access_denied
+      return false
+    end
+  end
+
+  def session_filter
+    if session[:id] != nil
+      return true
+    else
+      return false
+    end
+  end
+
+  def access_denied
+		redirect_to home_acceso_denegado_path
+	end
 
 end

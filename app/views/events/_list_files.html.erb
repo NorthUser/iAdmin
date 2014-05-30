@@ -11,14 +11,14 @@
       </thead>
       <tbody>
         <% @event.documents.each do |document| %>
-        <tr>
+        <tr cosita="<%= document.id %>" class="replace-file">
           <td><%= document.title %></td>
           <td><%= document.url %></td>
           <td><%= document.type_attribute %></td>
           <td>
             <%= (link_to '', "/events/#{document.id}/download", class: 'btn btn-primary glyphicon glyphicon-cloud-download') if @r  %>
             <%= (link_to '', "/events/#{document.id}/#{document.event_id}/change_doc", class: 'btn btn-success glyphicon glyphicon-refresh') if @w  %>
-            </a>
+            <%= (link_to 'X', "/events/#{document.id}/delete_file", method: :delete, data: { confirm: '¿Estas seguro de eliminar este archivo?' }, class: 'btn btn-danger glyphicon') if @w %>
         </tr>
         <% end %>
       </tbody>

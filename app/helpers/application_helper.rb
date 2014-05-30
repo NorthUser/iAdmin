@@ -57,7 +57,28 @@ module ApplicationHelper
   end
 
   def is_cheked(boolean)
-    (boolean)? 'checked' : '' 
+    (boolean)? 'checked' : ''
+  end
+
+  def in_session
+    if session[:id]
+      return true
+    else
+      return false
+    end
+  end
+
+  def is_chunk(key)
+    if session[:id]
+      user = User.find(session[:id])
+      if user
+        return user.profile.permissions.include?(key)
+      else
+        return false
+      end
+    else
+      return false
+    end
   end
 
 end

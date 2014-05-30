@@ -12,30 +12,49 @@
 
     <div class="collapse navbar-collapse" id="menu-iAdmin">
       <ul class="nav navbar-nav">
+        <% if is_chunk('usi') || is_chunk('50E') || is_chunk('044') || is_chunk('5C4') || is_chunk('3B6') %>
        <li class="dropdown">
          <a class="dropdown-toggle" data-toggle="dropdown">Aplicacion <span class="glyphicon glyphicon-hdd"> </span><b class="caret"></b></a>
          <ul class="dropdown-menu">
+          <% if is_chunk('usi') %>
           <li><a href="/users">Usuarios</a></li>
+          <% end %>
+          <% if is_chunk('50E') %>
           <li><a href="/profiles">Perfiles</a></li>
-          <li><a href="/permissions">Permisos</a></li>
+          <% end %>
+          <!-- <li><a href="/permissions">Permisos</a></li> -->
           <li class="divider"></li>
+          <% if is_chunk('044') %>
           <li><a href="/people">Persona</a></li>
+          <% end %>
+          <% if is_chunk('5C4') %>
           <li><a href="/person_types">Tipo de Personas</a></li>
+          <% end %>
+          <% if is_chunk('3B6') %>
           <li class="divider"></li>
           <li><a href="/places">Lugares</a></li>
-
+          <% end %>
         </ul>
       </li>
+      <% end %>
+      <% if is_chunk('02E') || is_chunk('CE7') || is_chunk('CB6') %>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">Eventos <span class="glyphicon glyphicon-send"> </span><b class="caret"></b></a>
         <ul class="dropdown-menu">
+          <% if is_chunk('02E') %>
           <li><a href="/events">Eventos</a></li>
+          <% end %>
+          <% if is_chunk('CE7') %>
           <!-- <li><a href="/documents">Documents</a></li> -->
           <li class="divider"></li>
           <li><a href="/event_types">Tipo de Eventos</a></li>
+          <% end %>
+          <% if is_chunk('CB6') %>
           <li><a href="/participant_types">Tipo de Participante</a></li>
+          <% end %>
         </ul>
       </li>
+      <% end %>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">

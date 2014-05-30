@@ -1,3 +1,7 @@
+<% content_for(:title) do %>Detalles<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', permissions_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -19,7 +23,3 @@
   <b>Description:</b>
   <%= @permission.description %>
 </p>
-
-
-<%= link_to 'Edit', edit_permission_path(@permission) %> |
-<%= link_to 'Back', permissions_path %>

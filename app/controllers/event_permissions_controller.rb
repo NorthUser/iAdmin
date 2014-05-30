@@ -1,4 +1,6 @@
 class EventPermissionsController < ApplicationController
+  before_filter :permission_filter, :except => [:create, :update, :show]
+  before_filter :session_filter, :only => [:create, :update]
   # GET /event_permissions
   # GET /event_permissions.json
   def index

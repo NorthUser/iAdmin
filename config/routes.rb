@@ -6,6 +6,8 @@ IAdmin::Application.routes.draw do
 
   get "home/logout"
 
+  get "home/acceso_denegado" => "home#acceso_denegado"
+
   post "home/login"
 
   post "events/upload"
@@ -15,6 +17,9 @@ IAdmin::Application.routes.draw do
   post "events/list_participant_type"
   post "events/addParticipante"
   match "events/participants"
+  post "events/update_file"
+  delete "events/:id/delete_file" => "events#delete_file"
+
 
   resources :event_permissions
 

@@ -24,9 +24,14 @@ class HomeController < ApplicationController
   # GET home/logout
   # Limpia variable de sesion
   def logout
-    # Se limpia la variable de sesion 
+    # Se limpia la variable de sesion
     reset_session
     # Redirecciona al indes de la web
     redirect_to home_index_path
   end
+
+  def acceso_denegado
+
+  end
+
 end

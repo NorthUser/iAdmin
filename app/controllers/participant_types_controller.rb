@@ -1,4 +1,6 @@
 class ParticipantTypesController < ApplicationController
+  before_filter :permission_filter, :except => [:create, :update, :show]
+  before_filter :session_filter, :only => [:create, :update]
   # GET /participant_types
   # GET /participant_types.json
   def index
@@ -44,7 +46,7 @@ class ParticipantTypesController < ApplicationController
 
     respond_to do |format|
       if @participant_type.save
-        format.html { redirect_to @participant_type, notice: 'Participant type was successfully created.' }
+        format.html { redirect_to participant_types_path, notice: 'Participant type was successfully created.' }
         format.json { render json: @participant_type, status: :created, location: @participant_type }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class ParticipantTypesController < ApplicationController
 
     respond_to do |format|
       if @participant_type.update_attributes(params[:participant_type])
-        format.html { redirect_to @participant_type, notice: 'Participant type was successfully updated.' }
+        format.html { redirect_to participant_types_path, notice: 'Participant type was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

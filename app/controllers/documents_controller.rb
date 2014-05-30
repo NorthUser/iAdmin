@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  before_filter :permission_filter, :except => [:create, :update]
+  before_filter :session_filter, :only => [:create, :update]
   # GET /documents
   # GET /documents.json
   def index

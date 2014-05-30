@@ -1,29 +1,32 @@
-<h1>Listing permissions</h1>
-
-<table>
-  <tr>
-    <th>Controller</th>
-    <th>Action</th>
-    <th>Key</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @permissions.each do |permission| %>
-  <tr>
-    <td><%= permission.controller %></td>
-    <td><%= permission.action %></td>
-    <td><%= permission.key %></td>
-    <td><%= permission.description %></td>
-    <td><%= link_to 'Show', permission %></td>
-    <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
-    <td><%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% content_for(:title) do %>Lista de permisos<% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', new_permission_path, class: 'btn btn-success glyphicon glyphicon-plus-sign' %>
 <% end %>
-</table>
+<div class="row">
+  <div class="col-sm-12 col-xs-12 col-md-12 table-responsive">
+    <table class="table table-striped table-hover datatable">
+      <tr>
+        <tr>
+          <th>Controller</th>
+          <th>Action</th>
+          <th>Key</th>
+          <th>Description</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
 
-<br />
-
-<%= link_to 'New Permission', new_permission_path %>
+        <% @permissions.each do |permission| %>
+        <tr>
+          <td><%= permission.controller %></td>
+          <td><%= permission.action %></td>
+          <td><%= permission.key %></td>
+          <td><%= permission.description %></td>
+          <td><%= link_to 'Show', permission %></td>
+          <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
+          <td><%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>

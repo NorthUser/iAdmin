@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_filter :permission_filter, :except => [:create, :update, :show]
+  before_filter :session_filter, :only => [:create, :update]
   # GET /profiles
   # GET /profiles.json
   def index

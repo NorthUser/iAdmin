@@ -1,6 +1,6 @@
-<h1>Editing permission</h1>
+<% content_for(:title) do %>Editar <%= @permission.description %><% end %>
+<% content_for(:primary_command) do %>
+<%= link_to '', permissions_path, class: 'btn btn-danger glyphicon glyphicon-arrow-left' %>
+<% end %>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @permission %> |
-<%= link_to 'Back', permissions_path %>

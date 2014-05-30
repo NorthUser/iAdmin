@@ -26,6 +26,11 @@ $(document).ready ->
 			string += "<input type='text' name='titulos[]' class='form-control' required='required' placeholder='Titulo'><label>"+$("#file_").get(0).files[x].name+"</label>"
 		$("#titulos").html(string)
 
+	$(".replace-file").click ->
+		$("#title_file").html($(this).children("td:nth-child(1)").html())
+		$("#modal_file").modal('show')
+		$("#file_id").val($(this).attr('cosita'))
+
 getUsers = ->
 	$.ajax "/events/list_users",
 	type: "post"

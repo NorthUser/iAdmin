@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_filter :permission_filter, :except => [:create, :update, :update_file, :list_participant_type, :list_users, :addParticipante, :change_attribute_doc, :download, :upload, :delete_file, :show]
+  before_filter :session_filter, :only => [:create, :update, :update_file, :list_participant_type, :list_users, :addParticipante, :change_attribute_doc, :download, :upload, :delete_file]
   # GET /events
   # GET /events.json
   def index
@@ -91,6 +93,48 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+
+  def update_file
+    file = params[:file]
+    doc = Document.find(params[:file_id])
+    msg = ""
+    name = file.original_filename
+    if type_file_valid(name)
+      if File.exist?(path_file(doc.url))
+        File.delete(path_file(doc.url))
+      end
+      resultado = File.open(path_file(name), "wb") { |f| f.write(file.read) }
+      if resultado
+        doc.url = name
+        msg += (name+" Se actualizo con exito!!") if doc.save
+      else
+        msg += "Ocrurrio un error durante la actualizacion, porfavor vuelva a intentarlo."
+      end
+    else
+      msg += "El tipo de archivo no es valido"
+    end
+    redirect_to :back, notice: msg
+  end
+
+  def delete_file
+    doc = Document.find(params[:id])
+    msg = ""
+    if doc
+      if File.exist?(path_file(doc.url))
+        resultado = File.delete(path_file(doc.url))
+        if resultado
+          doc.destroy
+          msg += "Exito!! se elimino correctamente"
+        else
+          msg += "No se pudo eliminar el archivo"
+        end
+      else
+        doc.destroy
+        msg += "No existe el fichero, se elimino el registro"
+      end
+    end
+    redirect_to :back, notice: msg
   end
 
   def upload

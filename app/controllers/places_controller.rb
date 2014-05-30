@@ -1,4 +1,6 @@
 class PlacesController < ApplicationController
+  before_filter :permission_filter, :except => [:create, :update, :show]
+  before_filter :session_filter, :only => [:create, :update]
   # GET /places
   # GET /places.json
   def index
@@ -44,7 +46,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
+        format.html { redirect_to places_path, notice: 'La ubicacion #{@place.name} se creo correctamente' }
         format.json { render json: @place, status: :created, location: @place }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.update_attributes(params[:place])
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
+        format.html { redirect_to places_path, notice: 'La ubicacion #{@place.name} se actualizo correctametne ' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
